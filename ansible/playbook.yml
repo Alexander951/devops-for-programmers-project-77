@@ -18,10 +18,10 @@
       tags: install
 
     - role: geerlingguy.docker
-      docker_packages_state: present
-      docker_daemon_reload: yes
-      docker_daemon_restart: yes
-      docker_user: "{{ ansible_user }}"
+      #docker_packages_state: present
+      #docker_daemon_reload: yes
+      #docker_daemon_restart: yes
+      docker_user: root
       tags: install-docker
   
   tasks:
