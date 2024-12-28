@@ -22,31 +22,22 @@
       tags: install-docker
   
   tasks:
-    - name: Check if _db_port is defined
-      debug:
-        msg: "The database port is {{ db_port }}"
-      when: _db_port is defined
-      become_user: "{{ ansible_user }}"
-      tags: deploy
-      
     - name: Prepare .env file
       ansible.builtin.template:
         src: templates/.env.j2
         dest: "{{ env_path }}"
         mode: '660'
-      #become: yes  
       tags: deploy
 
     - name: Start Redmine_
       community.docker.docker_container:
         name: "{{ container_name }}"
         image: "{{ docker_image }}"
-        restart_policy: always
-        state: started
+        #restart_policy: always
+        #state: started
         ports:
           - 80:3000
         env_file: "{{ env_path }}"
-      #become: yes  
       tags: deploy
 
     - name: Add cronjob for upmon
