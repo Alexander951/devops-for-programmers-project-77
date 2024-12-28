@@ -11,7 +11,6 @@
         cache_valid_time: 86400
       become: true
       tags: install
-      ignore_errors: yes
       
   roles:
     - role: geerlingguy.pip
@@ -23,7 +22,6 @@
       docker_user: 
       - "{{ ansible_user }}"
       tags: install-docker
-      ignore_errors: yes
   
   tasks:
     - name: Prepare .env file
@@ -32,7 +30,6 @@
         dest: "{{ env_path }}"
         mode: '0644'
       tags: deploy
-      ignore_errors: yes
       
     - name: Start Redmine
       community.docker.docker_container:
@@ -44,7 +41,6 @@
           - 80:3000
         env_file: "{{ env_path }}"
       tags: deploy
-      ignore_errors: yes
       
     - name: Add cronjob for upmon
       ansible.builtin.cron:
@@ -52,7 +48,7 @@
         special_time: "daily"
         job: "curl -m 10 --retry 5 {{ upmon_url }}"
       tags: monitoring
-      ignore_errors: yes
+
       
 - name: Install and setup Datadog Agent
   hosts: webservers
