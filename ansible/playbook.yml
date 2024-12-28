@@ -1,17 +1,8 @@
 - hosts: all
-  
+  become: true
   vars_files:
     - group_vars/webservers/vars.yml #for hexlet-chek passing
   
-  pre_tasks:
-    - name: Update and upgrade apt packages
-      ansible.builtin.apt:
-        upgrade: true
-        update_cache: true
-        cache_valid_time: 86400
-      become: true
-      tags: install
-      
   roles:
     - role: geerlingguy.pip
       become: yes
@@ -29,12 +20,12 @@
         mode: '660'
       tags: deploy
 
-    - name: Start Redmine_
+    - name: Start Redmine
       community.docker.docker_container:
         name: "{{ container_name }}"
         image: "{{ docker_image }}"
-        #restart_policy: always
-        #state: started
+        restart_policy: always
+        state: started
         ports:
           - 80:3000
         env_file: "{{ env_path }}"
