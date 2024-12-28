@@ -13,9 +13,9 @@
       tags: install
       
   roles:
-    #- role: geerlingguy.pip
-    #  become: yes
-    #  tags: install
+    - role: geerlingguy.pip
+      become: yes
+      tags: install
 
     - role: geerlingguy.docker
       docker_user: 
