@@ -35,7 +35,7 @@ install-pkg:
 	ansible-playbook ansible/playbook.yml -i ansible/inventory.ini -t install --vault-password-file .password
 
 deploy:
-	ansible-playbook ansible/playbook.yml -i ansible/inventory.ini -t deploy --vault-password-file .password -vv	
+	ansible-playbook ansible/playbook.yml -i ansible/inventory.ini -t deploy --vault-password-file .password	
 
 install-datadog:
 	ansible-playbook ansible/playbook.yml -i ansible/inventory.ini -t install-datadog --vault-password-file .password	
