@@ -1,5 +1,5 @@
 - hosts: all
-  become: true
+
   vars_files:
     - group_vars/webservers/vars.yml #for hexlet-chek passing
   

@@ -29,13 +29,13 @@ install-requirements:
 	ansible-galaxy install -r ansible/requirements.yml
 
 install-docker:
-	ansible-playbook ansible/playbook.yml -i ansible/inventory.ini -t install-docker --vault-password-file .password
+	ansible-playbook ansible/playbook.yml -i ansible/inventory.ini -t install-docker --vault-password-file .password -vvv
 	
 install-pkg:
-	ansible-playbook ansible/playbook.yml -i ansible/inventory.ini -t install --vault-password-file .password
+	ansible-playbook ansible/playbook.yml -i ansible/inventory.ini -t install --vault-password-file .password -vvv
 
 deploy:
-	ansible-playbook ansible/playbook.yml -i ansible/inventory.ini -t deploy --vault-password-file .password	
+	ansible-playbook ansible/playbook.yml -i ansible/inventory.ini -t deploy --vault-password-file .password -vvv	
 
 install-datadog:
 	ansible-playbook ansible/playbook.yml -i ansible/inventory.ini -t install-datadog --vault-password-file .password	
