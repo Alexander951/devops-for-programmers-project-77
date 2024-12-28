@@ -29,7 +29,7 @@
         dest: "{{ env_path }}"
         mode: '0644'
       tags: deploy
-
+      
     - name: Start Redmine
       community.docker.docker_container:
         name: "{{ container_name }}"
@@ -40,7 +40,8 @@
           - 80:3000
         env_file: "{{ env_path }}"
       tags: deploy
-
+      ignore_errors: yes
+      
     - name: Add cronjob for upmon
       ansible.builtin.cron:
         name: "upmon healthcheck"
