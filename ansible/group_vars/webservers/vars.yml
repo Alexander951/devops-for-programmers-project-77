@@ -5,7 +5,7 @@ docker_image: redmine:latest
 
 #geerlingguy
 pip_install_packages:
-    - name: docker
+    - docker
 
 docker_packages: 
     - "docker-ce"
