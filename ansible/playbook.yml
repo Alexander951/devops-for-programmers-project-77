@@ -1,8 +1,16 @@
 - hosts: all
-  become: true
   vars_files:
     - group_vars/webservers/vars.yml #for hexlet-chek passing
   
+  pre_tasks:
+    - name: Update and upgrade apt packages
+      ansible.builtin.apt:
+        upgrade: true
+        update_cache: true
+        cache_valid_time: 86400
+      become: true
+      tags: install
+      
   roles:
     - role: geerlingguy.pip
       become: yes

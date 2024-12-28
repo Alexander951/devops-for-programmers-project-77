@@ -23,7 +23,7 @@ resource "yandex_compute_instance" "web" {
   boot_disk {
     initialize_params {
       image_id = "fd82vchjp2kdjiuam29k"
-      size     = 20
+      size     = 25
     }
   }
 
