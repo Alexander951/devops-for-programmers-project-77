@@ -34,7 +34,7 @@
         src: templates/.env.j2
         dest: "{{ env_path }}"
         mode: '660'
-      become: yes  
+      #become: yes  
       tags: deploy
 
     - name: Start Redmine_
@@ -46,7 +46,7 @@
         ports:
           - 80:3000
         env_file: "{{ env_path }}"
-      become: yes  
+      #become: yes  
       tags: deploy
 
     - name: Add cronjob for upmon
