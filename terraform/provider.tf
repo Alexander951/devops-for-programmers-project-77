@@ -7,16 +7,6 @@ terraform {
       source = "DataDog/datadog"
     }
   }
-  required_version = ">= 0.13"
-  
-  cloud { 
-    
-    organization = "hexlet999" 
-
-    workspaces { 
-      name = "hexlet-workspace" 
-    } 
-  } 
 }
 
 provider "yandex" {
