@@ -19,8 +19,7 @@
       become: true
 
     - role: geerlingguy.docker
-      docker_user: 
-      - "{{ ansible_user }}"
+      docker_users: ubuntu
       tags: install-docker
       become: true
   
