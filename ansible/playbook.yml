@@ -13,14 +13,14 @@
       tags: install
       
   roles:
-    - role: geerlingguy.pip
-      become: yes
-      tags: install
+    #- role: geerlingguy.pip
+    #  become: yes
+    #  tags: install
 
-    #- role: geerlingguy.docker
-    #  docker_user: 
-    #  - "{{ ansible_user }}"
-    #  tags: install-docker
+    - role: geerlingguy.docker
+      docker_user: 
+      - "{{ ansible_user }}"
+      tags: install-docker
   
   tasks:
     - name: Prepare .env file
