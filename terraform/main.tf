@@ -37,7 +37,7 @@ resource "yandex_compute_instance" "web" {
     install-unified-agent = 0
     serial-port-enable    = 0
     ssh-keys              = "${var.vm_user}:${var.admin_ssh_key}"
-    user-data = <<-EOF
+    user-data             = <<-EOF
     #cloud-config
     datasource:
      Ec2:
