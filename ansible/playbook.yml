@@ -2,7 +2,7 @@
   become: true
   vars_files:
     - group_vars/webservers/vars.yml #for hexlet-chek passing
-  
+
   pre_tasks:
     - name: Update and upgrade apt packages
       ansible.builtin.apt:
@@ -11,18 +11,18 @@
         cache_valid_time: 86400
       become: true
       tags: install
-      
+
   roles:
     - role: geerlingguy.pip
       tags: install
       become: true
 
     - role: geerlingguy.docker
-      docker_user: 
+      docker_user:
       - "{{ ansible_user }}"
       tags: install-docker
       become: true
-  
+
   tasks:
     - name: Prepare .env file
       ansible.builtin.template:
@@ -30,7 +30,7 @@
         dest: "{{ env_path }}"
         mode: '0644'
       tags: deploy
-      
+
     - name: Start Redmine
       community.docker.docker_container:
         name: "{{ container_name }}"
@@ -41,27 +41,21 @@
           - 80:3000
         env_file: "{{ env_path }}"
       tags: deploy
-      
+
     - name: Add cronjob for upmon
       ansible.builtin.cron:
         name: "upmon healthcheck"
         special_time: "daily"
         job: "curl -m 10 --retry 5 {{ upmon_url }}"
-      become: true  
+      become: true
       tags: monitoring
 
-      
+
 - name: Install and setup Datadog Agent
   hosts: webservers
   tags: install-datadog
-         
+
   roles:
     - role: datadog.datadog
       become: yes
 
-           
-  
-  
-            
-         
-      
