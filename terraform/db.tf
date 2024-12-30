@@ -1,9 +1,9 @@
 resource "yandex_mdb_postgresql_cluster" "project-db" {
-  name        = "project-yc-db"
-  environment = "PRESTABLE"
-  network_id  = yandex_vpc_network.vpc.id
+  name               = "project-yc-db"
+  environment        = "PRESTABLE"
+  network_id         = yandex_vpc_network.vpc.id
   security_group_ids = [yandex_vpc_security_group.sg-vms.id]
-  
+
   config {
     version = 15
     resources {

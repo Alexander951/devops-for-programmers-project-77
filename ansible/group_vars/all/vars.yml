@@ -1,0 +1,12 @@
+domain_name = "web-programmer.kz."
+
+subdomain_name = "hexlet"
+
+db_name = "db1"
+
+db_user = "user1"
+
+compute_default_zone = "ru-central1-a"
+
+vm_user = "alex999"
+

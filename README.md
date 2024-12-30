@@ -13,31 +13,42 @@
 
 ## Usage
 Add `.password` file whith password to root folder
-Add `secret.auto.tfvars` file to "/terraform" folder. (For example "secret.auto.tfvars.example")
+The `ansible/group_vars/all/vault.yml` file contains the credentials for the infrastructure: 
+- db_password
+- yc_token
+- yc_cloud_id
+- yc_folder_id
+- datadog_api_key
+- datadog_app_key
+- upmon_url
+- admin_ssh_key
+- certificate_ids
+
+
 
 ```
-$ make login  # login terraform
+$ make create-vault  # Creating an encrypted file.
 ```
 ```
-$ make init  # initialize terraform
+$ make edit-vault  # Editing an encrypted file.
 ```
 ```
-$ make plan  # build (terraform) the plan of cloud environment
+$ make prepare-terraform  # Copy variables in Terraform.
 ```
 ```
-$ make apply  # initialize (terraform) the cloud environment
+$ make init  # initialize Terraform and Ansible.
 ```
 ```
-$ make destroy  # destroy (terraform) the cloud environment
+$ make login-tf  # login Terraform
 ```
 ```
-$ make create-config  # export required variables to confg file for App 
+$ make apply-tf  # initialize (terraform) the cloud environment
 ```
 ```
-$ make install-requirements  # (ansible) setup requirements for roles 
+$ make create-config  # Export value from Terraform structure to Ansible
 ```
 ```
-$ make install-pkg  # (ansible) install pip, (.env) file
+$ make destroy-tf  # destroy structure
 ```
 ```
 $ make install-docker  # (ansible) install docker 
@@ -46,15 +57,7 @@ $ make install-docker  # (ansible) install docker
 $ make deploy  # (ansible) deploy Redmine 
 ```
 ```
-$ make install-datadog  # (ansible) install and setup Datadog
+$ make monitoring  # install monitoring for Datadog, Upmon 
 ```
-```
-$ make upmon-monitor  # (ansible) install and setup upmon
-```
-```
-$ make create-vault  # (ansible) create secret vault file
-```
-```
-$ make edit-vault   # (ansible) edit secret vault file
-```
+
 

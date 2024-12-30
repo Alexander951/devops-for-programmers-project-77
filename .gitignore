@@ -3,3 +3,5 @@
 *.backup
 .password
 *.pem
+ansible/inventory.ini
+.terraform.lock.hcl

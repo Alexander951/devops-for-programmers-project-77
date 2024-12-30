@@ -1,0 +1,8 @@
+- hosts: local
+  gather_facts: no
+  tasks:
+    - name: Create secrets.auto.tfvars for Terraform
+      ansible.builtin.template:
+        src: templates/secrets.auto.tfvars.j2
+        dest: '../terraform/secrets.auto.tfvars'
+        mode: '0644'

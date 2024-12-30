@@ -28,15 +28,15 @@ resource "yandex_compute_instance" "web" {
   }
 
   network_interface {
-    subnet_id = yandex_vpc_subnet.subnet.id
-    nat       = true
+    subnet_id          = yandex_vpc_subnet.subnet.id
+    nat                = true
     security_group_ids = [yandex_vpc_security_group.sg-vms.id]
   }
 
   metadata = {
     install-unified-agent = 0
-    serial-port-enable = 0
-    ssh-keys = "${var.vm_user}:${var.admin_ssh_key}"
+    serial-port-enable    = 0
+    ssh-keys              = "${var.vm_user}:${var.admin_ssh_key}"
     #ssh-keys = "ubuntu:${file("id_rsa.pub")}"
     #ssh-keys = "${var.admin_ssh_key}"
     user-data = <<-EOF

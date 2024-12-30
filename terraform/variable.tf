@@ -1,9 +1,9 @@
 variable "vm_user" {
-  type    = string
+  type = string
 }
 
 variable "domain_name" {
-  type    = string
+  type = string
 }
 
 variable "certificate_ids" {
@@ -11,7 +11,7 @@ variable "certificate_ids" {
 }
 
 variable "subdomain_name" {
-  type    = string
+  type = string
 }
 
 variable "db_name" {
