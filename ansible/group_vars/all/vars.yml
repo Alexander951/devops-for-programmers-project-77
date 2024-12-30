@@ -1,6 +1,6 @@
 domain_name = "web-programmer.kz."
 
-subdomain_name = "hexlet"
+subdomain_name = "hexlet."
 
 db_name = "db1"
 

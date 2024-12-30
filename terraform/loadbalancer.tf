@@ -39,7 +39,7 @@ resource "yandex_alb_load_balancer" "project-balancer" {
 
   allocation_policy {
     location {
-      zone_id   = "ru-central1-a"
+      zone_id   = var.compute_default_zone
       subnet_id = yandex_vpc_subnet.subnet.id
     }
   }
