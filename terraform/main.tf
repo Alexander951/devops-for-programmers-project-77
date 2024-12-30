@@ -4,7 +4,7 @@ resource "yandex_vpc_network" "vpc" {
 
 resource "yandex_vpc_subnet" "subnet" {
   name           = "yc-web-subnet"
-  zone           = "ru-central1-a"
+  zone           = var.compute_default_zone
   network_id     = yandex_vpc_network.vpc.id
   v4_cidr_blocks = ["192.168.10.0/24"]
 }
@@ -13,7 +13,7 @@ resource "yandex_compute_instance" "web" {
   count = 2
 
   name = "yc-web-server-${count.index}"
-  zone = "ru-central1-a"
+  zone = var.compute_default_zone
 
   resources {
     cores  = 2
@@ -37,8 +37,6 @@ resource "yandex_compute_instance" "web" {
     install-unified-agent = 0
     serial-port-enable    = 0
     ssh-keys              = "${var.vm_user}:${var.admin_ssh_key}"
-    #ssh-keys = "ubuntu:${file("id_rsa.pub")}"
-    #ssh-keys = "${var.admin_ssh_key}"
     user-data = <<-EOF
     #cloud-config
     datasource:
@@ -100,12 +98,6 @@ resource "yandex_vpc_security_group" "sg-vms" {
     description    = "ssh"
     v4_cidr_blocks = ["0.0.0.0/0"]
     port           = 22
-  }
-  ingress {
-    protocol       = "TCP"
-    description    = "balancer2"
-    v4_cidr_blocks = ["0.0.0.0/0"]
-    port           = 3000
   }
   egress {
     protocol       = "ANY"

@@ -6,7 +6,7 @@ resource "yandex_dns_zone" "zone" {
 
 resource "yandex_dns_recordset" "a_record" {
   zone_id = yandex_dns_zone.zone.id
-  name    = var.subdomain_name + "" + var.domain_name
+  name    = ${var.subdomain_name == "" ? "${var.domain_name}" : "${var.subdomain_name}.${var.domain_name}"} 
   type    = "A"
   ttl     = 300
   data    = [yandex_alb_load_balancer.project-balancer.listener[0].endpoint[0].address[0].external_ipv4_address[0].address]
