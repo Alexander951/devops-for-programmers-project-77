@@ -33,7 +33,7 @@ $ make create-vault  # Creating an encrypted file.
 $ make edit-vault  # Editing an encrypted file.
 ```
 ```
-$ make prepare-terraform  # Copy variables in Terraform.
+$ make create-config-tf  # Copy variables in Terraform.
 ```
 ```
 $ make init  # initialize Terraform and Ansible.
