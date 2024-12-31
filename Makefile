@@ -1,5 +1,3 @@
-prepare-terraform:
-	make -C terraform prepare-terraform
 
 init:
 	make -C terraform init
@@ -12,7 +10,7 @@ apply-tf:
 	make -C terraform apply
 
 create-config-tf:
-	cd terraform && bash apply_configuration.sh
+	make -C terraform create-config
 	
 destroy-tf:
 	make -C terraform destroy

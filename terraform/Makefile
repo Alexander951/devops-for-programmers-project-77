@@ -1,29 +1,29 @@
 
 login:
-	terraform -chdir=terraform login; 
+	terraform login; 
 init:	
-	terraform -chdir=terraform init
+	terraform init
 	
 validate:
-	terraform -chdir=terraform validate	
+	terraform validate	
 	
 plan:
-	terraform -chdir=terraform plan
+	terraform plan
 	
 apply:
-	terraform -chdir=terraform apply;
+	terraform apply;
 	
 refresh:
-	terraform -chdir=terraform refresh;	
+	terraform refresh;	
 	
 output:
-	terraform -chdir=terraform output;	
+	terraform -output;	
 
 create-config:
-	cd terraform && bash apply_configuration.sh
+	bash apply_configuration.sh
 	
 destroy:
-	terraform -chdir=terraform destroy
+	terraform destroy
 	
 format_terraform:
-	erraform -chdir=terraform fmt
+	terraform fmt

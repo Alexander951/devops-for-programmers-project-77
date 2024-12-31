@@ -21,7 +21,7 @@ create-vault:
 	ansible-vault encrypt group_vars/all/vault.yml
 	
 edit-vault:
-	ansible-vault edit --vault-password-file ../.password group_vars/all/vault.yml
+	ansible-vault edit --vault-password-file .password group_vars/all/vault.yml
 	
 prepare-terraform:
 	ansible-playbook terraform_vars.yml -i inventory.ini  --vault-password-file .password	

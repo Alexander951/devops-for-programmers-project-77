@@ -4,4 +4,4 @@
 .password
 *.pem
 ansible/inventory.ini
-.terraform.lock.hcl
+terraform/.terraform.lock.hcl
