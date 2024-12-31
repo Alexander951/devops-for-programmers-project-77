@@ -45,7 +45,7 @@ $ make login-tf  # login Terraform
 $ make apply-tf  # initialize (terraform) the cloud environment
 ```
 ```
-$ make create-config  # Export value from Terraform structure to Ansible
+$ make prepare-ansible  # Export value from Terraform structure to Ansible
 ```
 ```
 $ make destroy-tf  # destroy structure
