@@ -11,7 +11,7 @@ login-tf:
 apply-tf:
 	make -C terraform apply
 
-create-config-tf:
+prepare-ansible:
 	make -C terraform create-config
 	
 destroy-tf:
