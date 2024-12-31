@@ -1,3 +1,5 @@
+prepare-terraform:
+	make -C ansible prepare-terraform
 
 init:
 	make -C terraform init
